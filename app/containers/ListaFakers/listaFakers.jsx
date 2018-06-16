@@ -72,9 +72,6 @@ class Example extends React.Component {
         width: 60,
         formatter: ImageFormatter,
         resizable: true,
-        filterable: true,
-        sortable: true,
-        editable: true,
         headerRenderer: <ImageFormatter value={faker.image.cats()} />
       },
       {
@@ -83,8 +80,9 @@ class Example extends React.Component {
         editor: <AutoCompleteEditor options={counties}/>,
         width: 200,
         resizable: true,
+        filterable: true,
         sortable: true,
-        editable: true,
+        editable: true
       },
       {
         key: 'title',
@@ -92,6 +90,7 @@ class Example extends React.Component {
         editor: <DropDownEditor options={titles}/>,
         width: 200,
         resizable: true,
+        filterable: true,
         sortable: true,
         editable: true,
         events: {
@@ -106,8 +105,8 @@ class Example extends React.Component {
         editable: true,
         width: 200,
         resizable: true,
-        sortable: true,
-        editable: true,
+        filterable: true,
+        sortable: true
       },
       {
         key: 'lastName',
@@ -115,8 +114,8 @@ class Example extends React.Component {
         editable: true,
         width: 200,
         resizable: true,
-        sortable: true,
-        editable: true,
+        filterable: true,
+        sortable: true
       },
       {
         key: 'email',
@@ -124,8 +123,8 @@ class Example extends React.Component {
         editable: true,
         width: 200,
         resizable: true,
-        sortable: true,
-        editable: true,
+        filterable: true,
+        sortable: true
       },
       {
         key: 'street',
@@ -133,8 +132,8 @@ class Example extends React.Component {
         editable: true,
         width: 200,
         resizable: true,
-        sortable: true,
-        editable: true,
+        filterable: true,
+        sortable: true
       },
       {
         key: 'zipCode',
@@ -142,8 +141,8 @@ class Example extends React.Component {
         editable: true,
         width: 200,
         resizable: true,
-        sortable: true,
-        editable: true,
+        filterable: true,
+        sortable: true
       },
       {
         key: 'date',
@@ -151,8 +150,8 @@ class Example extends React.Component {
         editable: true,
         width: 200,
         resizable: true,
-        sortable: true,
-        editable: true,
+        filterable: true,
+        sortable: true
       },
       {
         key: 'bs',
@@ -160,8 +159,8 @@ class Example extends React.Component {
         editable: true,
         width: 200,
         resizable: true,
-        sortable: true,
-        editable: true,
+        filterable: true,
+        sortable: true
       },
       {
         key: 'catchPhrase',
@@ -169,8 +168,8 @@ class Example extends React.Component {
         editable: true,
         width: 200,
         resizable: true,
-        sortable: true,
-        editable: true,
+        filterable: true,
+        sortable: true
       },
       {
         key: 'companyName',
@@ -178,8 +177,8 @@ class Example extends React.Component {
         editable: true,
         width: 200,
         resizable: true,
-        sortable: true,
-        editable: true,
+        filterable: true,
+        sortable: true
       },
       {
         key: 'sentence',
@@ -187,14 +186,14 @@ class Example extends React.Component {
         editable: true,
         width: 200,
         resizable: true,
-        sortable: true,
-        editable: true,
+        filterable: true,
+        sortable: true
       }
     ];
 
     let originalRows = this.createRows(1000);
     let rows = originalRows.slice(0);
-    this.state = { rows: this.createRows(1000), originalRows, filters: {}, value: 1, scrollToRowIndex: 0};
+    this.state = { rows: this.createRows(1000), originalRows, filters: {}, value: 1, scrollToRowIndex: 1};
   }
 
   createRows = (numberOfRows) => {
@@ -331,7 +330,6 @@ class Example extends React.Component {
 
   render() {
     return (
-
       <div>
         <div style={{display: 'flex', marginBottom: '10px', alignItems: 'center'}}>
           <span style={{marginRight: '10px'}}>Row Index: </span>
@@ -345,7 +343,6 @@ class Example extends React.Component {
             onClick={() => this.setState({scrollToRowIndex: this.state.value == 1 ? -1 : (this.state.value-1)})}>Scroll to row</button>
         </div>
         <ReactDataGrid
-          ref={ node => this.grid = node }
           onGridSort={this.handleGridSort}
           enableCellSelect={true}
           columns={this._columns}
@@ -355,7 +352,6 @@ class Example extends React.Component {
           toolbar={<Toolbar enableFilter={true} onAddRow={this.handleAddRow}/>}
           onAddFilter={this.handleFilterChange}
           onClearFilters={this.onClearFilters} 
-          enableRowSelect={true}
           scrollToRowIndex={this.state.scrollToRowIndex} 
           rowHeight={50}
           minHeight={600}
