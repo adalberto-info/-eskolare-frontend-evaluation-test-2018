@@ -64,7 +64,7 @@ class Example extends React.Component {
         width: 80,
         resizable: true,
         filterable: true,
-        sortable: true 
+        sortable: true
       },
       {
         key: 'avartar',
@@ -191,9 +191,10 @@ class Example extends React.Component {
       }
     ];
 
+
     let originalRows = this.createRows(1000);
     let rows = originalRows.slice(0);
-    this.state = { rows: this.createRows(1000), originalRows, filters: {}, value: 1, scrollToRowIndex: 1};
+    this.state = { originalRows, rows, filters: {}, value: 1, scrollToRowIndex: 1};
   }
 
   createRows = (numberOfRows) => {
@@ -241,14 +242,6 @@ class Example extends React.Component {
   rowGetter = (rowIdx) => {
     let rows = this.getRows();
     return rows[rowIdx];
-  };
-
-  getRows = () => {
-    return Selectors.getRows(this.state);
-  };
-
-  getSize = () => {
-    return this.getRows().length;
   };
 
   getColumns = () => {
@@ -312,8 +305,12 @@ class Example extends React.Component {
     return this.state.rows[index];
   };
 
+  getRows = () => {
+    return Selectors.getRows(this.state);
+  };
+
   getSize = () => {
-    return this.state.rows.length;
+    return this.getRows().length;
   };
 
   getColumns = () => {
@@ -343,20 +340,19 @@ class Example extends React.Component {
             onClick={() => this.setState({scrollToRowIndex: this.state.value == 1 ? -1 : (this.state.value-1)})}>Scroll to row</button>
         </div>
         <ReactDataGrid
-          onGridSort={this.handleGridSort}
-          enableCellSelect={true}
-          columns={this._columns}
-          rowGetter={this.rowGetter}
-          rowsCount={this.getSize()}
-          onGridRowsUpdated={this.handleGridRowsUpdated}
-          toolbar={<Toolbar enableFilter={true} onAddRow={this.handleAddRow}/>}
-          onAddFilter={this.handleFilterChange}
-          onClearFilters={this.onClearFilters} 
-          scrollToRowIndex={this.state.scrollToRowIndex} 
-          rowHeight={50}
-          minHeight={600}
-          rowScrollTimeout={200} />
+         onGridSort={this.handleGridSort}
+         enableCellSelect={true}
+         columns={this._columns}
+         rowGetter={this.rowGetter}
+         rowsCount={this.getSize()}
+         onGridRowsUpdated={this.handleGridRowsUpdated}
+         toolbar={<Toolbar enableFilter={true} onAddRow={this.handleAddRow}/>}
+         onAddFilter={this.handleFilterChange}
+         onClearFilters={this.onClearFilters}
+         scrollToRowIndex={this.state.scrollToRowIndex} />
+
       </div>
+
     );
   }
 }
