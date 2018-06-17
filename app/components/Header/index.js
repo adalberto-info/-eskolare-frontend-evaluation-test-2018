@@ -7,10 +7,11 @@ import NavBar from './NavBar';
 import HeaderLink from './HeaderLink';
 import Banner from './banner.jpg';
 import messages from './messages';
-
+import LoginButton from './loginButton';
+import { GoogleLogout } from 'react-google-login';
 class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    return (
+      return (
       <div>
         <A href="https://twitter.com/mxstbr">
           <Img src={Banner} alt="react-boilerplate - Logo" />
@@ -22,7 +23,13 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
           <HeaderLink to="/features">
             <FormattedMessage {...messages.features} />
           </HeaderLink>
+          <GoogleLogout
+          buttonText="Logout"
+          >
+          </GoogleLogout>
         </NavBar>
+        <LoginButton/>
+   
       </div>
     );
   }

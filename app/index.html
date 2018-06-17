@@ -15,6 +15,14 @@
 
     <!-- iOS home screen icons -->
     <meta name="apple-mobile-web-app-title" content="react boilerplate">
+ 
+    <script src="https://apis.google.com/js/platform.js?onload=triggerGoogleLoaded" async defer></script>
+    <script type="text/javascript">
+        function triggerGoogleLoaded() {
+            console.log("google event loaded");
+            //window.dispatchEvent(new Event('google-loaded'));
+        }
+    </script>
   
     <link rel="apple-touch-icon" sizes="120x120" href="/icon-120x120.png">
     <link rel="apple-touch-icon" sizes="152x152" href="/icon-152x152.png">

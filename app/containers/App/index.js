@@ -16,7 +16,7 @@ import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-//import ListaFakers from 'containers/ListaFakers/listaFakers';
+
 const ListaFakers = require('containers/ListaFakers/listaFakers');
 
 const AppWrapper = styled.div`
@@ -27,6 +27,7 @@ const AppWrapper = styled.div`
   padding: 0 16px;
   flex-direction: column;
 `;
+
 
 export default function App() {
   return (
